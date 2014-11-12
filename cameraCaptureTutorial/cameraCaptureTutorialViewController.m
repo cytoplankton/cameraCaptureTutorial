@@ -28,14 +28,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self initializeCamera];
-    
-    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 5);
-    dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-        captureImage.image = nil; //remove old image from view
-        captureImage.hidden = NO; //show the captured image view
-        imagePreview.hidden = YES; //hide the live video feed
-        [self capImage];
-    });
 }
 
 
@@ -113,28 +105,6 @@
 
 
 
-- (IBAction)getData:(id)sender {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
-    initWithURL:[NSURL
-    URLWithString:@"http://www.cimgf.com/testpost.php"]];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"text/xml"
-    forHTTPHeaderField:@"Content-type"];
-    
-    NSString *xmlString = @"<data><item>Item 1</item><item>Item 2</item></data>";
-    
-    [request setValue:[NSString stringWithFormat:@"%lu",
-            (unsigned long)[xmlString length]]
-            forHTTPHeaderField:@"Content-length"];
-    
-    [request setHTTPBody:[xmlString
-                          dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [[NSURLConnection alloc] 
-     initWithRequest:request 
-     delegate:self];
-}
 
 
 
@@ -155,7 +125,6 @@
 
 - (void) capImage { //method to capture image from AVCaptureSession video feed
     AVCaptureConnection *videoConnection = nil;
-    
     for (AVCaptureConnection *connection in stillImageOutput.connections) {
         
         for (AVCaptureInputPort *port in [connection inputPorts]) {

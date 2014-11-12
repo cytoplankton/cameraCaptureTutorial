@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Camera Capture Tutorial View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="cameraCaptureTutorialViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OqV-dv-unZ">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6B3-Be-O6k">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="9Al-Bp-iL7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Snap">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="snapImage:" destination="2" eventType="touchUpInside" id="oHo-XX-JW9"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFR-uA-7A4">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="Gwe-Zc-6SR"/>
+                                </constraints>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="r4e-MM-UJ2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="7Af-pn-fjw"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Front"/>
+                                    <segment title="Back"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchCamera:" destination="2" eventType="valueChanged" id="e1h-Xe-XRw"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6B3-Be-O6k" firstAttribute="centerX" secondItem="r4e-MM-UJ2" secondAttribute="centerX" type="default" id="0ZT-He-lwb"/>
+                            <constraint firstItem="OqV-dv-unZ" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="2cK-6E-cv3"/>
+                            <constraint firstItem="OqV-dv-unZ" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="5Wb-Qa-utn"/>
+                            <constraint firstItem="cFR-uA-7A4" firstAttribute="centerX" secondItem="6B3-Be-O6k" secondAttribute="centerX" type="default" id="G6R-bk-Dp0"/>
+                            <constraint firstItem="cFR-uA-7A4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Irv-cQ-MiT"/>
+                            <constraint firstAttribute="bottom" secondItem="r4e-MM-UJ2" secondAttribute="bottom" constant="115" id="hsN-uC-JVW"/>
+                            <constraint firstItem="cFR-uA-7A4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="mbe-Cy-27j"/>
+                            <constraint firstAttribute="bottom" secondItem="6B3-Be-O6k" secondAttribute="bottom" constant="172" id="vg7-mw-8Mk"/>
+                            <constraint firstItem="cFR-uA-7A4" firstAttribute="bottom" secondItem="OqV-dv-unZ" secondAttribute="bottom" type="default" id="w7A-hh-VJQ"/>
+                            <constraint firstItem="cFR-uA-7A4" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ycc-JI-cCZ"/>
+                            <constraint firstItem="OqV-dv-unZ" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="zkB-0T-DhT"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="cameraSwitch" destination="r4e-MM-UJ2" id="icB-cV-nDf"/>
+                        <outlet property="captureImage" destination="cFR-uA-7A4" id="G47-Sk-c3b"/>
+                        <outlet property="imagePreview" destination="OqV-dv-unZ" id="VO0-wV-S4D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="cameraCaptureTutorialViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/cameraCaptureTutorialViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="snapImage:"/>
+                <relationship kind="action" name="switchCamera:"/>
+                <relationship kind="outlet" name="cameraSwitch" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="captureImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imagePreview" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
